@@ -1,0 +1,34 @@
+<form class="card" [formGroup]="form" (ngSubmit)="submit()">
+  <h1>Create new post</h1>
+  <div class="form-control"
+       [ngClass]="{invalid: (form.get('title').touched && form.get('title').invalid) || formValid.title}"
+  >
+    <label for="title">Title</label>
+    <input type="text" id="title" formControlName="title" (input)="formValid.title = false">
+    <div class="validation" *ngIf="(form.get('title').touched && form.get('title').invalid) || formValid.title">
+      <small *ngIf="form.get('title').errors.required">Title is required</small>
+    </div>
+  </div>
+
+  <div class="form-control"
+       [ngClass]="{invalid: (form.get('text').touched && form.get('text').invalid) || formValid.text}"
+  >
+    <label>Post content</label>
+    <quill-editor formControlName="text" (input)="formValid.text = false"></quill-editor>
+    <div class="validation" *ngIf="(form.get('text').touched && form.get('text').invalid) || formValid.text">
+      <small *ngIf="form.get('text').errors.required">Text is required</small>
+    </div>
+  </div>
+
+  <div class="form-control"
+       [ngClass]="{invalid: (form.get('author').touched && form.get('author').invalid) || formValid.author}"
+  >
+    <label for="author">Author</label>
+    <input type="text" id="author" formControlName="author" (input)="formValid.author = false">
+    <div class="validation" *ngIf="(form.get('author').touched && form.get('author').invalid) || formValid.author">
+      <small *ngIf="form.get('author').errors.required">Author is required</small>
+    </div>
+  </div>
+
+  <button class="btn btn-block btn-dark" type="submit">Create post</button>
+</form>
