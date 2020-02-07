@@ -43,11 +43,7 @@ export class CreatePageComponent implements OnInit, OnDestroy {
         title: this.form.get('title').invalid,
         text: this.form.get('text').invalid,
         author: this.form.get('author').invalid
-<<<<<<< HEAD
       };
-=======
-      }
->>>>>>> 2948b80... Initial commit
       return
     }
     const {author, text, title} = this.form.value;
